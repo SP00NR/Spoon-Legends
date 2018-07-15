@@ -1,11 +1,21 @@
 // ==UserScript==
 // @name         SpoonLegends
-// @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Javascript auto clickers for leveling and raids, auto gift claim, and an auto selection script for quicker item selling.
+// @description  A userscript to for Stream Legends. Includes auto clickers, auto gift claim, and grid selection of items for quick selling.
+//
 // @author       SP00NR
+// @namespace       https://github.com/SP00NR
+// @downloadURL     https://github.com/SP00NR/Spoon-Legends/raw/master/SpoonLegends.user.js
+//
+// @license         GNU GENERAL PUBLIC LICENSE, Version 3
+// @copyright       Copyright (C) 2018, by SP00NR
+//
 // @include https://streamlegends.com/t/*/popout
+//
+// @version      1.1
+// @updateURL       https://github.com/SP00NR/Spoon-Legends/raw/master/SpoonLegends.user.js
+//
 // @grant        none
+// @noframes
 // ==/UserScript==
 
 (function() {
@@ -29,7 +39,7 @@
 
 // Add buttons. WIP
     var xAddOptions = document.getElementsByClassName("sleg-popout-content");
-    xAddOptions[0].insertAdjacentHTML("afterend", '<div class="options-container" style="background-color:#131d2f; height: 568px; padding: 10px 10px 10px 10px;"><BR><center>Seconds per loop &nbsp;<INPUT type="number" name="xloopSec" min="10" max="30" maxlength="2" style="color:#000;" value="14"></center><BR><button class="player-api-btn srpg-button" onclick="zBasicLeveling()">Regular AutoClicker</button><br><button class="player-api-btn srpg-button" onclick="zBasicRaiding()">Raid AutoClicker</button><br><button class="player-api-btn srpg-button" style="background-color:rgba(241,23,23,.5); border:1px solid #F24E4E;" onclick="zStopBasicTimers()">Stop AutoClickers</button><HR style="border:0; margin:1; width:100%; height:2px; background:rgb(0, 166, 209);"><BR><BR><BR><button class="player-api-btn srpg-button" onclick="zClaimGiftFunction()">Claim Gift</button><BR><BR><BR><BR><BR><BR><BR><BR><button class="player-api-btn srpg-button" style="background-color:rgba(0, 166, 209, 0.5); border:1px solid #00cbff;" onclick="SellClickFunction()">Grid AutoSelection</button></div>');
+    xAddOptions[0].insertAdjacentHTML("afterend", '<div class="options-container" style="background-color:#131d2f; height: 568px; padding: 10px 10px 10px 10px;"><BR><center>Seconds per loop &nbsp;<INPUT type="number" name="xloopSec" min="10" max="30" maxlength="2" style="color:#000;" value="14"></center><BR><button class="player-api-btn srpg-button" onclick="zBasicLeveling()">Regular Auto Clicker</button><br><button class="player-api-btn srpg-button" onclick="zBasicRaiding()">Raid Auto Clicker</button><br><button class="player-api-btn srpg-button" style="background-color:rgba(241,23,23,.5); border:1px solid #F24E4E;" onclick="zStopBasicTimers()">Stop Auto Clickers</button><HR style="border:0; margin:1; width:100%; height:2px; background:rgb(0, 166, 209);"><BR><BR><BR><button class="player-api-btn srpg-button" style="background-color:rgba(0, 166, 209, 0.5); border:1px solid #00cbff;" onclick="SellClickFunction()">Item Grid Selection</button></div>');
 
 // Add Status DIV
     var xAddStatus = document.getElementsByClassName("sleg-game");
@@ -100,7 +110,7 @@ window.zClaimGiftFunction = function () {
 window.zBasicLeveling = function () {
     var xLoopSecs = document.querySelector('[name="xloopSec"]').value;
     document.title= "Starting Loop " + xLoopSecs + " seconds";
-	document.getElementById("status").innerHTML = "Starting: Adventure AutoClicker";
+	document.getElementById("status").innerHTML = "Starting: Regular Auto Clicker";
 	timeBasicLeveling = setInterval(zBasicLevelingFunction, xLoopSecs * 1000);
 }
 
@@ -108,13 +118,13 @@ window.zBasicLeveling = function () {
 window.zBasicRaiding = function () {
     var xLoopSecs = document.querySelector('[name="xloopSec"]').value;
     document.title= "Starting Loop " + xLoopSecs + " seconds";
-	document.getElementById("status").innerHTML = "Starting: Raid AutoClicker";
+	document.getElementById("status").innerHTML = "Starting: Raid Auto Clicker";
 	timeBasicRaiding = setInterval(zBasicRaidingFunction, xLoopSecs * 1000);
 }
 
 
 window.zStopBasicTimers = function () {
-	document.getElementById("status").innerHTML = "Stopping Main Timers";
+	document.getElementById("status").innerHTML = "Stopping Auto Clicker Timers";
 	clearInterval(timeBasicLeveling);
 	clearInterval(timeBasicRaiding);
     document.title= "Stopping Loop";
@@ -177,7 +187,7 @@ window.SellClickFunction = function () {
     setTimeout(function(){ document.elementFromPoint(153,439).click();}, 650);
     setTimeout(function(){ document.elementFromPoint(223,439).click();}, 670);
     setTimeout(function(){ document.elementFromPoint(286,439).click();}, 690);
-    document.getElementById("status").innerHTML = "Item Grid AutoSelection!";
+    document.getElementById("status").innerHTML = "Grid Item Selection!";
 };
 
 
