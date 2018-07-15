@@ -23,15 +23,13 @@
 
 
 // Vars and what not
-
-	var timeBasicLeveling;
+    var timeBasicLeveling;
     var timeBasicRaiding;
     var NumLoops = 0;
 
 
 
 // Move game to the top left corner! X,Y coordinates should be universal now!
-
     var xFixCords = document.getElementsByClassName("StreamRpgPopoutController");
     xFixCords[0] .style.alignItems = "flex-start";
     xFixCords[0] .style.justifyContent = "flex-start";
@@ -56,8 +54,8 @@
 
 window.zBasicLevelingFunction = function () {
 
-	var d = new Date();
-	var t = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    var d = new Date();
+    var t = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
     NumLoops++;
     document.title= "Loop #" + NumLoops + " at " + t;
 
@@ -65,44 +63,44 @@ window.zBasicLevelingFunction = function () {
     var click4 = (document.querySelector('[name="xloopSec"]').value * 1000) - 1000;
     var click5 = (document.querySelector('[name="xloopSec"]').value * 1000) - 900;
 
-	document.elementFromPoint(65,157).click();
+    document.elementFromPoint(65,157).click();
     document.getElementById("status").innerHTML = "Clicking first location";
-	setTimeout(function(){ document.elementFromPoint(243,452).click(); document.getElementById("status").innerHTML = "Starting Fight";}, 500); //initiate first fight
-	setTimeout(function(){ document.elementFromPoint(296,361).click(); document.getElementById("status").innerHTML = "Collect Loot";}, click3); //12800
-	setTimeout(function(){ document.elementFromPoint(296,89).click(); document.getElementById("status").innerHTML = "Onwards - After Collect Loot";}, click4); //13000
-	setTimeout(function(){ document.elementFromPoint(293,347).click(); document.getElementById("status").innerHTML = "Onwards - No Loot";}, click5); //13100
+    setTimeout(function(){ document.elementFromPoint(243,452).click(); document.getElementById("status").innerHTML = "Starting Fight";}, 500); //initiate first fight
+    setTimeout(function(){ document.elementFromPoint(296,361).click(); document.getElementById("status").innerHTML = "Collect Loot";}, click3); //12800
+    setTimeout(function(){ document.elementFromPoint(296,89).click(); document.getElementById("status").innerHTML = "Onwards - After Collect Loot";}, click4); //13000
+    setTimeout(function(){ document.elementFromPoint(293,347).click(); document.getElementById("status").innerHTML = "Onwards - No Loot";}, click5); //13100
 }
 
 
 window.zBasicRaidingFunction = function () {
 
-var d = new Date();
-	var t = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-	NumLoops++;
-	document.title= "Loop #" + NumLoops + " at " + t;
+    var d = new Date();
+    var t = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    NumLoops++;
+    document.title= "Loop #" + NumLoops + " at " + t;
 
     var click3 = (document.querySelector('[name="xloopSec"]').value * 1000) - 1500;
     var click4 = (document.querySelector('[name="xloopSec"]').value * 1000) - 1200;
     var click5 = (document.querySelector('[name="xloopSec"]').value * 1000) - 500;
 
     document.elementFromPoint(68,160).click();
-	document.getElementById("status").innerHTML = "Clicking first location";
+    document.getElementById("status").innerHTML = "Clicking first location";
     //setTimeout(function(){ document.elementFromPoint(299, 92 ).click(); document.getElementById("status").innerHTML = "Back Map";}, 50); //Back Map
     //setTimeout(function(){ document.elementFromPoint(68,160).click(); document.getElementById("status").innerHTML = "First Adventure";}, 100); //First 1
     setTimeout(function(){ document.elementFromPoint(68,160).click(); document.getElementById("status").innerHTML = "RE: Clicking first location";}, 150); //RE: Clicking first location/Raidmap
     setTimeout(function(){ document.elementFromPoint(68,160).click(); document.getElementById("status").innerHTML = "RE: Clicking first location";}, 200); //RE: Clicking first location/Raidmap
-	setTimeout(function(){ document.elementFromPoint(243,452).click(); document.getElementById("status").innerHTML = "Starting Fight";}, 500); //initiate first fight
-	setTimeout(function(){ document.elementFromPoint(239,362).click(); document.getElementById("status").innerHTML = "Victory";}, click3);
-	setTimeout(function(){ document.elementFromPoint(286,98).click(); document.getElementById("status").innerHTML = "Onwards - After Collect Loot";}, click4);
-	setTimeout(function(){ document.elementFromPoint(291,236).click(); document.getElementById("status").innerHTML = "Back to Map";}, click5);
+    setTimeout(function(){ document.elementFromPoint(243,452).click(); document.getElementById("status").innerHTML = "Starting Fight";}, 500); //initiate first fight
+    setTimeout(function(){ document.elementFromPoint(239,362).click(); document.getElementById("status").innerHTML = "Victory";}, click3);
+    setTimeout(function(){ document.elementFromPoint(286,98).click(); document.getElementById("status").innerHTML = "Onwards - After Collect Loot";}, click4);
+    setTimeout(function(){ document.elementFromPoint(291,236).click(); document.getElementById("status").innerHTML = "Back to Map";}, click5);
 }
 
 
 window.zClaimGiftFunction = function () {
-	document.getElementById('srpg-nav-tab-GUILD').click(); //Guild
-	setTimeout(function(){ document.elementFromPoint(306,139).click();}, 250); //Gift Shop
-	setTimeout(function(){ document.elementFromPoint(263, 261).click();}, 500); //Claim
-	setTimeout(function(){ document.getElementById('srpg-nav-tab-FIGHT').click();}, 1000); //Back to fight
+    document.getElementById('srpg-nav-tab-GUILD').click(); //Guild
+    setTimeout(function(){ document.elementFromPoint(306,139).click();}, 250); //Gift Shop
+    setTimeout(function(){ document.elementFromPoint(263, 261).click();}, 500); //Claim
+    setTimeout(function(){ document.getElementById('srpg-nav-tab-FIGHT').click();}, 1000); //Back to fight
     document.getElementById("status").innerHTML = "Gift Claimed if Available";
 }
 
@@ -110,23 +108,23 @@ window.zClaimGiftFunction = function () {
 window.zBasicLeveling = function () {
     var xLoopSecs = document.querySelector('[name="xloopSec"]').value;
     document.title= "Starting Loop " + xLoopSecs + " seconds";
-	document.getElementById("status").innerHTML = "Starting: Regular Auto Clicker";
-	timeBasicLeveling = setInterval(zBasicLevelingFunction, xLoopSecs * 1000);
+    document.getElementById("status").innerHTML = "Starting: Regular Auto Clicker";
+    timeBasicLeveling = setInterval(zBasicLevelingFunction, xLoopSecs * 1000);
 }
 
 
 window.zBasicRaiding = function () {
     var xLoopSecs = document.querySelector('[name="xloopSec"]').value;
     document.title= "Starting Loop " + xLoopSecs + " seconds";
-	document.getElementById("status").innerHTML = "Starting: Raid Auto Clicker";
-	timeBasicRaiding = setInterval(zBasicRaidingFunction, xLoopSecs * 1000);
+    document.getElementById("status").innerHTML = "Starting: Raid Auto Clicker";
+    timeBasicRaiding = setInterval(zBasicRaidingFunction, xLoopSecs * 1000);
 }
 
 
 window.zStopBasicTimers = function () {
-	document.getElementById("status").innerHTML = "Stopping Auto Clicker Timers";
-	clearInterval(timeBasicLeveling);
-	clearInterval(timeBasicRaiding);
+    document.getElementById("status").innerHTML = "Stopping Auto Clicker Timers";
+    clearInterval(timeBasicLeveling);
+    clearInterval(timeBasicRaiding);
     document.title= "Stopping Loop";
     NumLoops = 0;
 }
